@@ -26,8 +26,8 @@ export function LoginScreen() {
                 />
               </div>
             </div>
-            <h1 className={styles.title}>Welcome Back</h1>
-            <p className={styles.subtitle}>Sign in to your account</p>
+            <h1 className={styles.title}>Transcend the Ordinary</h1>
+            <p className={styles.subtitle}>Sign in to continue your journey</p>
           </div>
           
           <LoginForm />

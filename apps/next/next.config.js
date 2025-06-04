@@ -84,6 +84,10 @@ module.exports = {
   },
   reactStrictMode: false, // reanimated doesn't support this on web
 
+  // Remove Next.js branding/indicators
+  poweredByHeader: false,
+  generateBuildId: () => 'build',
+
   ...withWebpack,
   ...withTurpopack,
 }
