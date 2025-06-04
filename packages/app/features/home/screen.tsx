@@ -37,6 +37,12 @@ export function HomeScreen() {
       </View>
       <View style={{ flexDirection: 'row', gap: 32 }}>
         <TextLink
+          href="/login"
+          style={{ fontSize: 16, fontWeight: 'bold', color: 'purple' }}
+        >
+          🔐 Beautiful Login Screen
+        </TextLink>
+        <TextLink
           href="/users/fernando"
           style={{ fontSize: 16, fontWeight: 'bold', color: 'blue' }}
         >
