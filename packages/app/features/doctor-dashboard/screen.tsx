@@ -1,4 +1,4 @@
-dashboard progress commit'use client'
+'use client'
 
 import { TextLink } from 'solito/link'
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native'
