@@ -1,0 +1,239 @@
+/* Create Form Flat Styles */
+.form-container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.form-glass {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-glass:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.form-input {
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  border-radius: 4px;
+  color: #202124;
+  transition: all 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: #5f6368;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 1px #1a73e8;
+}
+
+.form-input:hover {
+  border-color: #1a73e8;
+}
+
+.form-button {
+  transition: all 0.2s ease;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.form-button-primary {
+  background: #1a73e8;
+  color: white;
+  border: none;
+}
+
+.form-button-primary:hover {
+  background: #1557b3;
+}
+
+.form-button-secondary {
+  background: #ffffff;
+  color: #5f6368;
+  border: 1px solid #dadce0;
+}
+
+.form-button-secondary:hover {
+  background: #f8f9fa;
+  border-color: #dadce0;
+}
+
+.form-button-accent {
+  background: #ffffff;
+  color: #1a73e8;
+  border: 1px solid #1a73e8;
+}
+
+.form-button-accent:hover {
+  background: #e8f0fe;
+}
+
+.form-question-card {
+  transition: all 0.3s ease;
+}
+
+.form-question-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.form-add-question {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.form-add-question:hover {
+  border-color: rgba(0, 212, 255, 0.5);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.form-tab {
+  transition: all 0.2s ease;
+}
+
+.form-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+
+.form-tab.active {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: #00d4ff;
+}
+
+.form-option-remove {
+  transition: all 0.2s ease;
+}
+
+.form-option-remove:hover {
+  background: rgba(255, 107, 53, 0.3);
+  transform: scale(1.1);
+}
+
+.form-scale-point {
+  transition: all 0.2s ease;
+}
+
+.form-scale-point:hover {
+  background: rgba(0, 212, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .form-shape-1,
+  .form-shape-2 {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .form-container {
+    padding: 16px;
+  }
+  
+  .form-question-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Animation classes */
+.form-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Template grid */
+.form-template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.form-template-card {
+  transition: all 0.3s ease;
+}
+
+.form-template-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Question type indicators */
+.form-type-free-response {
+  background: #e8f0fe;
+  color: #1a73e8;
+}
+
+.form-type-scale {
+  background: #fce8e6;
+  color: #d93025;
+}
+
+.form-type-multiple-choice {
+  background: #e6f4ea;
+  color: #137333;
+} 

@@ -1,0 +1,153 @@
+/* Doctor Dashboard Flat Styles */
+.dashboard-container {
+  min-height: 100vh;
+  background: #f8f9fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.dashboard-sidebar {
+  background: #ffffff;
+  border-right: 1px solid #e8eaed;
+}
+
+.dashboard-glass {
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-glass:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.dashboard-nav-item {
+  transition: all 0.2s ease;
+  border-radius: 12px;
+}
+
+.dashboard-nav-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.dashboard-nav-item.active {
+  background: rgba(0, 212, 255, 0.15);
+  border: 1px solid #00d4ff;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.2);
+}
+
+.dashboard-action-button {
+  transition: all 0.3s ease;
+}
+
+.dashboard-action-button:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-stat-card {
+  transition: all 0.3s ease;
+}
+
+.dashboard-stat-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-patient-item {
+  transition: all 0.2s ease;
+}
+
+.dashboard-patient-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateX(4px);
+}
+
+.dashboard-activity-item {
+  transition: all 0.2s ease;
+}
+
+.dashboard-activity-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.5);
+}
+
+/* Gradient text effect */
+.dashboard-gradient-text {
+  background: linear-gradient(45deg, #00d4ff, #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pulse animation for notifications */
+.dashboard-pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 212, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 255, 0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .dashboard-sidebar {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-shape-1,
+  .dashboard-shape-2 {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .dashboard-stats-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .dashboard-action-buttons {
+    flex-direction: column;
+    gap: 12px;
+  }
+} 

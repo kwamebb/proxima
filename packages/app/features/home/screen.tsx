@@ -43,6 +43,12 @@ export function HomeScreen() {
           🔐 Beautiful Login Screen
         </TextLink>
         <TextLink
+          href="/doctor-dashboard"
+          style={{ fontSize: 16, fontWeight: 'bold', color: 'green' }}
+        >
+          🏥 Doctor Dashboard
+        </TextLink>
+        <TextLink
           href="/users/fernando"
           style={{ fontSize: 16, fontWeight: 'bold', color: 'blue' }}
         >
