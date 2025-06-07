@@ -9772,6 +9772,7 @@ __metadata:
     eslint: "npm:^8.21.0"
     turbo: "npm:^2.4.4"
     typescript: "npm:^5.2.2"
+    zustand: "npm:^5.0.5"
   languageName: unknown
   linkType: soft
 
@@ -11255,5 +11256,26 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10/f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zustand@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "zustand@npm:5.0.5"
+  peerDependencies:
+    "@types/react": ">=18.0.0"
+    immer: ">=9.0.6"
+    react: ">=18.0.0"
+    use-sync-external-store: ">=1.2.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    immer:
+      optional: true
+    react:
+      optional: true
+    use-sync-external-store:
+      optional: true
+  checksum: 10/ae10e1da74e0abbc669401f30baa1088b779c54a2a9c30f1c62d03a4f4d1b9ac9b60933eca01e3d3871d644d387a289005b45607339f253cd3fadf7e3a390724
   languageName: node
   linkType: hard

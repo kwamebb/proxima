@@ -3,6 +3,7 @@
 import { TextLink } from 'solito/link'
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
+import { PatientSearchScreen } from '../patient-search'
 
 export function DoctorDashboardScreen() {
   const [activeNav, setActiveNav] = useState('dashboard')
@@ -81,12 +82,16 @@ export function DoctorDashboardScreen() {
 
       {/* Main Content */}
       <View style={styles.mainContent}>
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Dashboard Overview</Text>
-          <Text style={styles.headerSubtitle}>Welcome back, Dr. Johnson</Text>
-        </View>
+        {activeNav === 'patient-search' ? (
+          <PatientSearchScreen />
+        ) : (
+          <>
+            <View style={styles.header}>
+              <Text style={styles.headerTitle}>Dashboard Overview</Text>
+              <Text style={styles.headerSubtitle}>Welcome back, Dr. Johnson</Text>
+            </View>
 
-        <ScrollView style={styles.dashboardContent} showsVerticalScrollIndicator={false}>
+            <ScrollView style={styles.dashboardContent} showsVerticalScrollIndicator={false}>
           {/* Stats Cards Row */}
           <View style={styles.statsRow}>
             <View style={styles.statCard}>
@@ -197,6 +202,8 @@ export function DoctorDashboardScreen() {
             </View>
           </View>
         </ScrollView>
+          </>
+        )}
       </View>
     </View>
   )
@@ -224,6 +231,11 @@ const styles = {
     borderRightWidth: 1,
     borderRightColor: '#e8eaed',
     paddingVertical: 24,
+    position: 'fixed',
+    left: 0,
+    top: 0,
+    zIndex: 100,
+    height: '100vh',
   },
   sidebarHeader: {
     paddingHorizontal: 24,
@@ -267,6 +279,7 @@ const styles = {
   mainContent: {
     flex: 1,
     backgroundColor: '#f8f9fa',
+    marginLeft: 280,
   },
   header: {
     backgroundColor: '#ffffff',
