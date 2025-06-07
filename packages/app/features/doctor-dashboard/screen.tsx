@@ -4,9 +4,11 @@ import { TextLink } from 'solito/link'
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native'
 import { useState } from 'react'
 import { PatientSearchScreen } from '../patient-search'
+import { SettingsScreen } from '../settings'
 
 export function DoctorDashboardScreen() {
   const [activeNav, setActiveNav] = useState('dashboard')
+  const [showSettings, setShowSettings] = useState(false)
 
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: '📊' },
@@ -65,7 +67,13 @@ export function DoctorDashboardScreen() {
                   styles.navItem,
                   activeNav === item.id && styles.activeNavItem
                 ]}
-                onPress={() => setActiveNav(item.id)}
+                onPress={() => {
+                  if (item.id === 'settings') {
+                    setShowSettings(true)
+                  } else {
+                    setActiveNav(item.id)
+                  }
+                }}
               >
                 <Text style={styles.navIcon}>{item.icon}</Text>
                 <Text style={[
@@ -205,6 +213,12 @@ export function DoctorDashboardScreen() {
           </>
         )}
       </View>
+
+      {/* Settings Modal */}
+      <SettingsScreen 
+        isVisible={showSettings} 
+        onClose={() => setShowSettings(false)} 
+      />
     </View>
   )
 }

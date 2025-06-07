@@ -3,6 +3,7 @@
 import { TextLink } from 'solito/link'
 import { Text, View, ScrollView, TouchableOpacity, TextInput } from 'react-native'
 import { useState } from 'react'
+import { FormTemplateScreen, TemplatePreview, FormTemplate } from '../form-templates'
 
 interface Question {
   id: string
@@ -14,9 +15,11 @@ interface Question {
 }
 
 export function CreateFormScreen() {
-  const [activeTab, setActiveTab] = useState<'templates' | 'create'>('create')
+  const [activeTab, setActiveTab] = useState<'templates' | 'create'>('templates')
   const [formTitle, setFormTitle] = useState('Untitled Form')
   const [formDescription, setFormDescription] = useState('')
+  const [showPreview, setShowPreview] = useState(false)
+  const [previewTemplate, setPreviewTemplate] = useState<FormTemplate | null>(null)
   const [questions, setQuestions] = useState<Question[]>([
     {
       id: '1',
@@ -24,6 +27,74 @@ export function CreateFormScreen() {
       question: 'Enter your question here...',
     }
   ])
+
+  const handleTemplateSelect = (template: FormTemplate) => {
+    // Convert template to our question format
+    const templateQuestions: Question[] = []
+    
+    template.sections.forEach((section, sectionIndex) => {
+      section.fields.forEach((field, fieldIndex) => {
+        const questionId = `${sectionIndex}-${fieldIndex}`
+        
+        switch (field.type) {
+          case 'textarea':
+          case 'text':
+          case 'email':
+          case 'phone':
+          case 'date':
+            templateQuestions.push({
+              id: questionId,
+              type: 'free-response',
+              question: field.label,
+            })
+            break
+          case 'scale':
+            templateQuestions.push({
+              id: questionId,
+              type: 'scale',
+              question: field.label,
+              scaleMin: field.min || 1,
+              scaleMax: field.max || 10,
+            })
+            break
+          case 'select':
+          case 'radio':
+          case 'multiselect':
+          case 'checkbox':
+            templateQuestions.push({
+              id: questionId,
+              type: 'multiple-choice',
+              question: field.label,
+              options: field.options || ['Option 1', 'Option 2'],
+            })
+            break
+        }
+      })
+    })
+
+    // Update form with template data
+    setFormTitle(template.name)
+    setFormDescription(template.description)
+    setQuestions(templateQuestions.length > 0 ? templateQuestions : questions)
+    setActiveTab('create')
+  }
+
+  const handleTemplatePreview = (template: FormTemplate) => {
+    setPreviewTemplate(template)
+    setShowPreview(true)
+  }
+
+  const handlePreviewClose = () => {
+    setShowPreview(false)
+    setPreviewTemplate(null)
+  }
+
+  const handleUseTemplateFromPreview = () => {
+    if (previewTemplate) {
+      handleTemplateSelect(previewTemplate)
+      handlePreviewClose()
+    }
+  }
 
   const addQuestion = (type: Question['type']) => {
     const newQuestion: Question = {
@@ -198,24 +269,13 @@ export function CreateFormScreen() {
       </View>
 
       {/* Content */}
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-        {activeTab === 'templates' ? (
-          <View style={styles.templatesContainer}>
-            <Text style={styles.sectionTitle}>Form Templates</Text>
-            <Text style={styles.comingSoon}>Templates coming soon...</Text>
-            <View style={styles.templateGrid}>
-              {['Patient Intake', 'Medical History', 'Symptom Assessment', 'Follow-up Survey'].map((template, index) => (
-                <View key={index} style={styles.templateCard}>
-                  <Text style={styles.templateTitle}>{template}</Text>
-                  <Text style={styles.templateDescription}>Professional template ready to use</Text>
-                  <TouchableOpacity style={styles.templateButton} disabled>
-                    <Text style={styles.templateButtonText}>Use Template</Text>
-                  </TouchableOpacity>
-                </View>
-              ))}
-            </View>
-          </View>
-        ) : (
+      {activeTab === 'templates' ? (
+        <FormTemplateScreen 
+          onTemplateSelect={handleTemplateSelect} 
+          onTemplatePreview={handleTemplatePreview}
+        />
+      ) : (
+        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
           <View style={styles.createContainer}>
             {/* Form Settings */}
             <View style={styles.formSettingsCard}>
@@ -286,8 +346,18 @@ export function CreateFormScreen() {
               </TouchableOpacity>
             </View>
           </View>
-        )}
-      </ScrollView>
+        </ScrollView>
+      )}
+
+      {/* Template Preview Modal */}
+      {previewTemplate && (
+        <TemplatePreview
+          template={previewTemplate}
+          isVisible={showPreview}
+          onClose={handlePreviewClose}
+          onUseTemplate={handleUseTemplateFromPreview}
+        />
+      )}
     </View>
   )
 }
