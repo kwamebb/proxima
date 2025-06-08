@@ -18,7 +18,7 @@ interface Question {
 }
 
 export function CreateFormScreen() {
-  const [activeTab, setActiveTab] = useState<'templates' | 'create' | 'marketplace'>('templates')
+  const [activeTab, setActiveTab] = useState<'templates' | 'create' | 'marketplace' | 'my-forms'>('templates')
   const [formTitle, setFormTitle] = useState('Untitled Form')
   const [formDescription, setFormDescription] = useState('')
   const [showPreview, setShowPreview] = useState(false)
@@ -268,12 +268,15 @@ export function CreateFormScreen() {
           </TextLink>
           <Text style={styles.headerTitle}>Form Builder</Text>
         </View>
-        <TouchableOpacity 
-          style={styles.exportButton}
-          onPress={() => setShowExportOptions(true)}
-        >
-          <Text style={styles.exportButtonText}>📤 Export Form</Text>
-        </TouchableOpacity>
+        {/* Only show export button when actually creating a form */}
+        {activeTab === 'create' && (
+          <TouchableOpacity 
+            style={styles.exportButton}
+            onPress={() => setShowExportOptions(true)}
+          >
+            <Text style={styles.exportButtonText}>📤 Export Form</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
       {/* Tab Navigation */}
@@ -302,93 +305,119 @@ export function CreateFormScreen() {
             🌟 Community Marketplace
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity 
+          style={[styles.tab, activeTab === 'my-forms' && styles.activeTab]}
+          onPress={() => setActiveTab('my-forms')}
+        >
+          <Text style={[styles.tabText, activeTab === 'my-forms' && styles.activeTabText]}>
+            📁 My Forms
+          </Text>
+        </TouchableOpacity>
       </View>
 
       {/* Content */}
-      {activeTab === 'templates' ? (
-        <FormTemplateScreen 
-          onTemplateSelect={handleTemplateSelect} 
-          onTemplatePreview={handleTemplatePreview}
-        />
-      ) : activeTab === 'marketplace' ? (
-        <CommunityMarketplaceScreen
-          onTemplateSelect={handleTemplateSelect}
-          onTemplatePreview={handleTemplatePreview}
-        />
-      ) : (
-        <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
-          <View style={styles.createContainer}>
-            {/* Form Settings */}
-            <View style={styles.formSettingsCard}>
-              <Text style={styles.sectionTitle}>Form Details</Text>
-              <TextInput
-                style={styles.titleInput}
-                value={formTitle}
-                onChangeText={setFormTitle}
-                placeholder="Form Title"
-                placeholderTextColor="#5f6368"
-              />
-              <TextInput
-                style={styles.descriptionInput}
-                value={formDescription}
-                onChangeText={setFormDescription}
-                placeholder="Form Description (optional)"
-                placeholderTextColor="#5f6368"
-                multiline
-              />
-            </View>
-
-            {/* Questions */}
-            <View style={styles.questionsContainer}>
-              <Text style={styles.sectionTitle}>Questions</Text>
-              {questions.map((question, index) => renderQuestion(question, index))}
-              
-              {/* Add Question Buttons */}
-              <View style={styles.addQuestionContainer}>
-                <Text style={styles.addQuestionTitle}>Add New Question</Text>
-                <View style={styles.addQuestionButtons}>
-                  <TouchableOpacity 
-                    style={styles.addQuestionButton}
-                    onPress={() => addQuestion('free-response')}
-                  >
-                    <Text style={styles.addQuestionIcon}>📝</Text>
-                    <Text style={styles.addQuestionText}>Free Response</Text>
-                  </TouchableOpacity>
-                  
-                  <TouchableOpacity 
-                    style={styles.addQuestionButton}
-                    onPress={() => addQuestion('scale')}
-                  >
-                    <Text style={styles.addQuestionIcon}>📊</Text>
-                    <Text style={styles.addQuestionText}>1-10 Scale</Text>
-                  </TouchableOpacity>
-                  
-                  <TouchableOpacity 
-                    style={styles.addQuestionButton}
-                    onPress={() => addQuestion('multiple-choice')}
-                  >
-                    <Text style={styles.addQuestionIcon}>☑️</Text>
-                    <Text style={styles.addQuestionText}>Multiple Choice</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-
-            {/* Actions */}
-            <View style={styles.actionsContainer}>
-              <TouchableOpacity style={styles.previewButton}>
-                <Text style={styles.previewButtonText}>👁️ Preview Form</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.saveButton}>
-                <Text style={styles.saveButtonText}>💾 Save Draft</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.publishButton}>
-                <Text style={styles.publishButtonText}>🚀 Publish Form</Text>
-              </TouchableOpacity>
+      <View style={styles.content}>
+        {activeTab === 'templates' ? (
+          <FormTemplateScreen 
+            onTemplateSelect={handleTemplateSelect} 
+            onTemplatePreview={handleTemplatePreview}
+          />
+        ) : activeTab === 'marketplace' ? (
+          <CommunityMarketplaceScreen
+            onTemplateSelect={handleTemplateSelect}
+            onTemplatePreview={handleTemplatePreview}
+          />
+        ) : activeTab === 'my-forms' ? (
+          <View style={styles.myFormsContainer}>
+            <Text style={styles.myFormsTitle}>My Forms</Text>
+            <Text style={styles.myFormsSubtitle}>Your saved and published forms will appear here</Text>
+            {/* Placeholder for My Forms content */}
+            <View style={styles.emptyState}>
+              <Text style={styles.emptyStateIcon}>📝</Text>
+              <Text style={styles.emptyStateTitle}>No forms yet</Text>
+              <Text style={styles.emptyStateText}>
+                Create your first form or save a template to see it here
+              </Text>
             </View>
           </View>
-        </ScrollView>
-      )}
+        ) : (
+          <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+            <View style={styles.createContainer}>
+              {/* Form Settings */}
+              <View style={styles.formSettingsCard}>
+                <Text style={styles.sectionTitle}>Form Details</Text>
+                <TextInput
+                  style={styles.titleInput}
+                  value={formTitle}
+                  onChangeText={setFormTitle}
+                  placeholder="Form Title"
+                  placeholderTextColor="#5f6368"
+                />
+                <TextInput
+                  style={styles.descriptionInput}
+                  value={formDescription}
+                  onChangeText={setFormDescription}
+                  placeholder="Form Description (optional)"
+                  placeholderTextColor="#5f6368"
+                  multiline
+                />
+              </View>
+
+              {/* Questions */}
+              <View style={styles.questionsContainer}>
+                <Text style={styles.sectionTitle}>Questions</Text>
+                {questions.map((question, index) => renderQuestion(question, index))}
+                
+                {/* Add Question Buttons */}
+                <View style={styles.addQuestionContainer}>
+                  <Text style={styles.addQuestionTitle}>Add New Question</Text>
+                  <View style={styles.addQuestionButtons}>
+                    <TouchableOpacity 
+                      style={styles.addQuestionButton}
+                      onPress={() => addQuestion('free-response')}
+                    >
+                      <Text style={styles.addQuestionIcon}>📝</Text>
+                      <Text style={styles.addQuestionText}>Free Response</Text>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity 
+                      style={styles.addQuestionButton}
+                      onPress={() => addQuestion('scale')}
+                    >
+                      <Text style={styles.addQuestionIcon}>📊</Text>
+                      <Text style={styles.addQuestionText}>1-10 Scale</Text>
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity 
+                      style={styles.addQuestionButton}
+                      onPress={() => addQuestion('multiple-choice')}
+                    >
+                      <Text style={styles.addQuestionIcon}>☑️</Text>
+                      <Text style={styles.addQuestionText}>Multiple Choice</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </View>
+
+              {/* Actions */}
+              <View style={styles.actionsContainer}>
+                <TouchableOpacity style={styles.previewButton}>
+                  <Text style={styles.previewButtonText}>👁️ Preview Form</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.saveButton}>
+                  <Text style={styles.saveButtonText}>💾 Save Draft</Text>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                  style={styles.publishButton}
+                  onPress={() => setShowExportOptions(true)}
+                >
+                  <Text style={styles.publishButtonText}>📤 Export Form</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ScrollView>
+        )}
+      </View>
 
       {/* Template Preview Modal */}
       {previewTemplate && (
@@ -842,5 +871,39 @@ const styles = {
     color: '#00d4ff',
     fontSize: 14,
     fontWeight: '600',
+  },
+  myFormsContainer: {
+    padding: 32,
+  },
+  myFormsTitle: {
+    fontSize: 20,
+    fontWeight: '600',
+    color: '#202124',
+    marginBottom: 20,
+  },
+  myFormsSubtitle: {
+    fontSize: 14,
+    color: '#5f6368',
+    marginBottom: 32,
+  },
+  emptyState: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyStateIcon: {
+    fontSize: 48,
+    marginBottom: 16,
+  },
+  emptyStateTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#202124',
+    marginBottom: 8,
+  },
+  emptyStateText: {
+    color: '#5f6368',
+    fontSize: 14,
+    textAlign: 'center',
   },
 } 
