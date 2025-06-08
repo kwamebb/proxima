@@ -4,6 +4,9 @@ import { TextLink } from 'solito/link'
 import { Text, View, ScrollView, TouchableOpacity, TextInput } from 'react-native'
 import { useState } from 'react'
 import { FormTemplateScreen, TemplatePreview, FormTemplate } from '../form-templates'
+import { CommunityMarketplaceScreen, CommunityTemplate } from '../community-marketplace'
+import { ExportOptionsPopup } from '../export-options'
+import { CommunitySharingPopup } from '../community-sharing'
 
 interface Question {
   id: string
@@ -15,11 +18,13 @@ interface Question {
 }
 
 export function CreateFormScreen() {
-  const [activeTab, setActiveTab] = useState<'templates' | 'create'>('templates')
+  const [activeTab, setActiveTab] = useState<'templates' | 'create' | 'marketplace'>('templates')
   const [formTitle, setFormTitle] = useState('Untitled Form')
   const [formDescription, setFormDescription] = useState('')
   const [showPreview, setShowPreview] = useState(false)
-  const [previewTemplate, setPreviewTemplate] = useState<FormTemplate | null>(null)
+  const [previewTemplate, setPreviewTemplate] = useState<FormTemplate | CommunityTemplate | null>(null)
+  const [showExportOptions, setShowExportOptions] = useState(false)
+  const [showCommunitySharing, setShowCommunitySharing] = useState(false)
   const [questions, setQuestions] = useState<Question[]>([
     {
       id: '1',
@@ -28,7 +33,7 @@ export function CreateFormScreen() {
     }
   ])
 
-  const handleTemplateSelect = (template: FormTemplate) => {
+  const handleTemplateSelect = (template: FormTemplate | CommunityTemplate) => {
     // Convert template to our question format
     const templateQuestions: Question[] = []
     
@@ -79,7 +84,7 @@ export function CreateFormScreen() {
     setActiveTab('create')
   }
 
-  const handleTemplatePreview = (template: FormTemplate) => {
+  const handleTemplatePreview = (template: FormTemplate | CommunityTemplate) => {
     setPreviewTemplate(template)
     setShowPreview(true)
   }
@@ -94,6 +99,26 @@ export function CreateFormScreen() {
       handleTemplateSelect(previewTemplate)
       handlePreviewClose()
     }
+  }
+
+  // Export handlers
+  const exportHandlers = {
+    pdf: () => console.log('Export PDF'),
+    print: () => console.log('Print form'),
+    save: () => console.log('Save locally'),
+    link: () => console.log('Generate link'),
+    email: () => console.log('Email distribution'),
+    qr: () => console.log('Generate QR code'),
+    embed: () => console.log('Get embed code'),
+    community: () => {
+      setShowExportOptions(false)
+      setShowCommunitySharing(true)
+    }
+  }
+
+  const handleCommunityShare = (config: any) => {
+    console.log('Community sharing config:', config)
+    // Handle the sharing logic here
   }
 
   const addQuestion = (type: Question['type']) => {
@@ -243,7 +268,10 @@ export function CreateFormScreen() {
           </TextLink>
           <Text style={styles.headerTitle}>Form Builder</Text>
         </View>
-        <TouchableOpacity style={styles.exportButton}>
+        <TouchableOpacity 
+          style={styles.exportButton}
+          onPress={() => setShowExportOptions(true)}
+        >
           <Text style={styles.exportButtonText}>📤 Export Form</Text>
         </TouchableOpacity>
       </View>
@@ -255,7 +283,7 @@ export function CreateFormScreen() {
           onPress={() => setActiveTab('templates')}
         >
           <Text style={[styles.tabText, activeTab === 'templates' && styles.activeTabText]}>
-            📋 Template Forms
+            📋 Pre-made Templates
           </Text>
         </TouchableOpacity>
         <TouchableOpacity 
@@ -266,12 +294,25 @@ export function CreateFormScreen() {
             ✨ Create Form
           </Text>
         </TouchableOpacity>
+        <TouchableOpacity 
+          style={[styles.tab, activeTab === 'marketplace' && styles.activeTab]}
+          onPress={() => setActiveTab('marketplace')}
+        >
+          <Text style={[styles.tabText, activeTab === 'marketplace' && styles.activeTabText]}>
+            🌟 Community Marketplace
+          </Text>
+        </TouchableOpacity>
       </View>
 
       {/* Content */}
       {activeTab === 'templates' ? (
         <FormTemplateScreen 
           onTemplateSelect={handleTemplateSelect} 
+          onTemplatePreview={handleTemplatePreview}
+        />
+      ) : activeTab === 'marketplace' ? (
+        <CommunityMarketplaceScreen
+          onTemplateSelect={handleTemplateSelect}
           onTemplatePreview={handleTemplatePreview}
         />
       ) : (
@@ -358,6 +399,27 @@ export function CreateFormScreen() {
           onUseTemplate={handleUseTemplateFromPreview}
         />
       )}
+
+      {/* Export Options Popup */}
+      <ExportOptionsPopup
+        isVisible={showExportOptions}
+        onClose={() => setShowExportOptions(false)}
+        onExportPDF={exportHandlers.pdf}
+        onPrint={exportHandlers.print}
+        onSaveLocally={exportHandlers.save}
+        onGenerateLink={exportHandlers.link}
+        onEmailDistribution={exportHandlers.email}
+        onGenerateQR={exportHandlers.qr}
+        onEmbedCode={exportHandlers.embed}
+        onShareCommunity={exportHandlers.community}
+      />
+
+      {/* Community Sharing Popup */}
+      <CommunitySharingPopup
+        isVisible={showCommunitySharing}
+        onClose={() => setShowCommunitySharing(false)}
+        onShare={handleCommunityShare}
+      />
     </View>
   )
 }
