@@ -1,4 +1,4 @@
-'use client'
+ 'use client'
 
 import { TextLink } from 'solito/link'
 import { MotiLink } from 'solito/moti/app'
@@ -10,7 +10,7 @@ export function HomeScreen() {
       style={{
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center',       
         padding: 16,
         gap: 32,
       }}

@@ -2544,6 +2544,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native@npm:^0.73.0":
+  version: 0.73.0
+  resolution: "@types/react-native@npm:0.73.0"
+  dependencies:
+    react-native: "npm:*"
+  checksum: 10/a764ca5d876dae3c109da449f736c44271b3b236d0d6e836c078247af1419f6d851600c56bb0c26f3e0d1b4be6eaac56b65c1f74ad0f0d05baf8b65dd1d5c597
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:^18.2.21":
   version: 18.3.18
   resolution: "@types/react@npm:18.3.18"
@@ -7101,12 +7110,14 @@ __metadata:
   resolution: "next-app@workspace:apps/next"
   dependencies:
     "@types/node": "npm:17.0.21"
+    "@types/react-native": "npm:^0.73.0"
     app: "npm:*"
     eslint-config-next: "npm:13.2.0"
     next: "npm:^15.2.3"
     raf: "npm:^3.4.1"
     react: "npm:^19.0.0"
     react-dom: "npm:^19.0.0"
+    react-native-reanimated: "npm:^3.18.0"
     react-native-web: "npm:~0.19.10"
   languageName: unknown
   linkType: soft
@@ -7975,6 +7986,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-reanimated@npm:^3.18.0":
+  version: 3.18.0
+  resolution: "react-native-reanimated@npm:3.18.0"
+  dependencies:
+    "@babel/plugin-transform-arrow-functions": "npm:^7.0.0-0"
+    "@babel/plugin-transform-class-properties": "npm:^7.0.0-0"
+    "@babel/plugin-transform-classes": "npm:^7.0.0-0"
+    "@babel/plugin-transform-nullish-coalescing-operator": "npm:^7.0.0-0"
+    "@babel/plugin-transform-optional-chaining": "npm:^7.0.0-0"
+    "@babel/plugin-transform-shorthand-properties": "npm:^7.0.0-0"
+    "@babel/plugin-transform-template-literals": "npm:^7.0.0-0"
+    "@babel/plugin-transform-unicode-regex": "npm:^7.0.0-0"
+    "@babel/preset-typescript": "npm:^7.16.7"
+    convert-source-map: "npm:^2.0.0"
+    invariant: "npm:^2.2.4"
+    react-native-is-edge-to-edge: "npm:1.1.7"
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+    react: "*"
+    react-native: "*"
+  checksum: 10/aec34f97393b3189fc727cee306481af0f6f47309589f04d4ece89cae69144131f896ddc226f786c2261c828091481494cbd6c442d1152461da83334fc643def
+  languageName: node
+  linkType: hard
+
 "react-native-reanimated@npm:~3.17.4":
   version: 3.17.5
   resolution: "react-native-reanimated@npm:3.17.5"
@@ -8042,7 +8077,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native@npm:0.79.3":
+"react-native@npm:*, react-native@npm:0.79.3":
   version: 0.79.3
   resolution: "react-native@npm:0.79.3"
   dependencies:

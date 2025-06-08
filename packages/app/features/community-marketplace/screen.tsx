@@ -390,7 +390,7 @@ const styles = {
   backButtonText: {
     color: '#1a73e8',
     fontSize: 14,
-    fontWeight: '500',
+    fontWeight: '500' as const,
   },
   searchResultsTitle: {
     fontSize: 24,
