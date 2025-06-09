@@ -966,13 +966,34 @@ export default function MarketingPage() {
               </ul>
             </div>
             <div className="solution-visual">
-              <Image 
-                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                alt="Smart Medical Forms Interface"
-                width={500}
-                height={400}
-                className="solution-image"
-              />
+              <div className="translation-examples">
+                <div className="translation-item">
+                  <div className="patient-speech">
+                    <div className="speech-bubble patient-bubble">
+                      <p>"My stomach really hurts when I eat anything"</p>
+                    </div>
+                    <div className="speaker-label">Patient</div>
+                  </div>
+                  
+                  <div className="ai-processing">
+                    <div className="ai-brain">
+                      <div className="pulse-rings">
+                        <div className="pulse-ring"></div>
+                        <div className="pulse-ring"></div>
+                        <div className="pulse-ring"></div>
+                      </div>
+                      <span className="ai-text">AI</span>
+                    </div>
+                  </div>
+                  
+                  <div className="clinical-translation">
+                    <div className="speech-bubble clinical-bubble">
+                      <p>Postprandial epigastric pain, suggests possible peptic ulcer disease</p>
+                    </div>
+                    <div className="speaker-label">Clinical Translation</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

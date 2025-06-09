@@ -1541,7 +1541,7 @@ html, body {
   margin-bottom: 0.25rem;
 }
 
-.stat-label {
+.proof-stat .stat-label {
   font-size: 0.875rem;
   color: #6b7280;
   font-weight: 500;
@@ -2022,7 +2022,7 @@ html, body {
   margin-bottom: 0.25rem;
 }
 
-.stat-label {
+.stat-card .stat-label {
   font-size: 0.875rem;
   color: #0369a1;
   font-weight: 500;
