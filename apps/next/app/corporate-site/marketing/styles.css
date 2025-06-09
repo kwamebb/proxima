@@ -333,7 +333,7 @@ html, body {
   }
 }
 
-.stat-label {
+.stats-section .stat-label {
   font-size: 1rem;
   color: #a7f3d0;
   font-weight: 500;
