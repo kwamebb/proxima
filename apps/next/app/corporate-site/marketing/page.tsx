@@ -15,8 +15,8 @@ export default function MarketingPage() {
               <Image 
                 src="/logo.png" 
                 alt="Proxima" 
-                width={140} 
-                height={40}
+                width={420} 
+                height={120}
                 className="logo"
               />
             </Link>
@@ -276,6 +276,129 @@ export default function MarketingPage() {
                   <span className="feature-text">Comprehensive patient intelligence dashboard</span>
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Forms & AI Translation Section */}
+      <section className="solution-section solution-alt">
+        <div className="solution-container">
+          <div className="solution-grid">
+            <div className="solution-content">
+              <h2 className="solution-title">Intelligent Forms: Your Bridge to Better Care</h2>
+              <p className="solution-text">
+                Not every situation requires 3D interaction. Our intelligent forms provide a familiar 
+                interface enhanced by powerful AI that transforms patient responses into precise clinical language. 
+                Perfect for routine check-ins, follow-ups, or organizations beginning their digital transformation.
+              </p>
+              <p className="solution-text">
+                Watch as "my stomach really hurts when I eat" becomes "epigastric pain associated with food 
+                intake, suggesting possible peptic ulcer disease or gastritis." Our AI doesn't just collect 
+                data—it translates human experience into medical intelligence.
+              </p>
+              <ul className="feature-list">
+                <li className="feature-item">
+                  <span className="feature-check">✓</span>
+                  <span className="feature-text">AI-powered translation from patient language to clinical terminology</span>
+                </li>
+                <li className="feature-item">
+                  <span className="feature-check">✓</span>
+                  <span className="feature-text">Familiar form interface with intelligent question routing</span>
+                </li>
+                <li className="feature-item">
+                  <span className="feature-check">✓</span>
+                  <span className="feature-text">Seamless integration with existing clinical workflows</span>
+                </li>
+                <li className="feature-item">
+                  <span className="feature-check">✓</span>
+                  <span className="feature-text">Perfect stepping stone to full 3D implementation</span>
+                </li>
+              </ul>
+            </div>
+            <div className="solution-visual">
+              <div className="forms-demo">
+                <div className="form-card">
+                  <div className="form-header">
+                    <h4 className="form-title">Patient Input</h4>
+                  </div>
+                  <div className="form-content">
+                    <p className="patient-text">"My back hurts really bad when I bend over to pick things up"</p>
+                  </div>
+                </div>
+                <div className="ai-arrow">
+                  <span className="arrow-text">AI Translation</span>
+                  <div className="arrow">→</div>
+                </div>
+                <div className="form-card clinical-card">
+                  <div className="form-header clinical-header">
+                    <h4 className="form-title">Clinical Translation</h4>
+                  </div>
+                  <div className="form-content">
+                    <p className="clinical-text">Acute lumbar pain exacerbated by forward flexion, consistent with mechanical low back pain or possible disc herniation</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Integration Section */}
+      <section className="solution-section">
+        <div className="solution-container">
+          <div className="problem-header">
+            <h2 className="problem-title">Seamless Integration, Immediate Impact</h2>
+            <p className="problem-subtitle">
+              Deploy Proxima across your entire healthcare ecosystem. From individual practices to 
+              large health systems, our platform adapts to your existing workflows while transforming 
+              patient communication overnight.
+            </p>
+          </div>
+          
+          <div className="integration-grid">
+            <div className="integration-card">
+              <div className="integration-icon">
+                <span className="medical-icon">🏥</span>
+              </div>
+              <h3 className="card-title">EMR Integration</h3>
+              <p className="card-text">
+                Direct integration with Epic, Cerner, and other major EMR systems. Patient data flows 
+                seamlessly into existing clinical workflows without disrupting established processes.
+              </p>
+            </div>
+            
+            <div className="integration-card">
+              <div className="integration-icon">
+                <span className="medical-icon">📱</span>
+              </div>
+              <h3 className="card-title">Multi-Platform Deployment</h3>
+              <p className="card-text">
+                Deploy on tablets, desktops, or mobile devices. Same intelligent interface, 
+                optimized for each platform. Patients can even complete assessments from home.
+              </p>
+            </div>
+            
+            <div className="integration-card">
+              <div className="integration-icon">
+                <span className="medical-icon">⚡</span>
+              </div>
+              <h3 className="card-title">Real-Time Analytics</h3>
+              <p className="card-text">
+                Track communication effectiveness, diagnostic accuracy improvements, and patient 
+                satisfaction metrics. Data-driven insights to optimize clinical outcomes.
+              </p>
+            </div>
+            
+            <div className="integration-card">
+              <div className="integration-icon">
+                <span className="medical-icon">🔒</span>
+              </div>
+              <h3 className="card-title">Enterprise Security</h3>
+              <p className="card-text">
+                HIPAA-compliant infrastructure with end-to-end encryption. SOC 2 certified with 
+                enterprise-grade security controls and audit trails.
+              </p>
             </div>
           </div>
         </div>
