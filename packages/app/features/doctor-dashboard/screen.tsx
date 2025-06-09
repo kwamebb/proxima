@@ -11,11 +11,11 @@ export function DoctorDashboardScreen() {
   const [showSettings, setShowSettings] = useState(false)
 
   const sidebarItems = [
-    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-    { id: 'create-form', label: 'Create Form', icon: '📝' },
-    { id: 'patient-search', label: 'Patient Search', icon: '🔍' },
-    { id: 'export', label: 'Export Data', icon: '📤' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' },
+    { id: 'dashboard', label: 'Dashboard', icon: 'https://img.icons8.com/fluency/48/dashboard-layout.png' },
+    { id: 'create-form', label: 'Create Form', icon: 'https://img.icons8.com/ios-filled/50/form.png' },
+    { id: 'patient-search', label: 'Patient Search', icon: 'https://img.icons8.com/ios-filled/50/search.png' },
+    { id: 'export', label: 'Export Data', icon: 'https://img.icons8.com/ios-filled/50/download.png' },
+    { id: 'settings', label: 'Settings', icon: 'https://img.icons8.com/ios-filled/50/settings.png' },
   ]
 
   const recentPatients = [
@@ -37,6 +37,7 @@ export function DoctorDashboardScreen() {
       {/* Sidebar */}
       <View style={styles.sidebar}>
         <View style={styles.sidebarHeader}>
+          <img src="/logo.png" style={{width: 96, height: 96, marginBottom: 4}} alt="Proxima Medical" />
           <Text style={styles.sidebarTitle}>Proxima</Text>
         </View>
         
@@ -51,7 +52,7 @@ export function DoctorDashboardScreen() {
                   ]}
                   onPress={() => setActiveNav(item.id)}
                 >
-                  <Text style={styles.navIcon}>{item.icon}</Text>
+                  <img src={item.icon} style={styles.navIcon} alt={item.label} />
                   <Text style={[
                     styles.navLabel,
                     activeNav === item.id && styles.activeNavLabel
@@ -75,7 +76,7 @@ export function DoctorDashboardScreen() {
                   }
                 }}
               >
-                <Text style={styles.navIcon}>{item.icon}</Text>
+                <img src={item.icon} style={styles.navIcon} alt={item.label} />
                 <Text style={[
                   styles.navLabel,
                   activeNav === item.id && styles.activeNavLabel
@@ -103,6 +104,7 @@ export function DoctorDashboardScreen() {
           {/* Stats Cards Row */}
           <View style={styles.statsRow}>
             <View style={styles.statCard}>
+              <img src="https://img.icons8.com/ios-filled/50/form.png" style={{width: 32, height: 32, position: 'absolute', top: 20, right: 20, opacity: 0.2, filter: 'sepia(1) saturate(2) hue-rotate(200deg) brightness(0.8)'}} alt="Forms" />
               <Text style={styles.statNumber}>12</Text>
               <Text style={styles.statLabel}>Unread Forms</Text>
               <View style={styles.statBadge}>
@@ -111,19 +113,21 @@ export function DoctorDashboardScreen() {
             </View>
 
             <View style={styles.statCard}>
+              <img src="https://img.icons8.com/fluency/48/group.png" style={{width: 32, height: 32, position: 'absolute', top: 20, right: 20, opacity: 0.3}} alt="Patients" />
               <Text style={styles.statNumber}>45</Text>
               <Text style={styles.statLabel}>Patients This Week</Text>
-                             <View style={[styles.statBadge, { backgroundColor: 'rgba(0, 212, 255, 0.2)' }]}>
-                 <Text style={[styles.statBadgeText, { color: '#00d4ff' }]}>+8 from last week</Text>
-               </View>
-             </View>
+              <View style={[styles.statBadge, { backgroundColor: 'rgba(59, 130, 246, 0.15)' }]}>
+                <Text style={[styles.statBadgeText, { color: '#3b82f6' }]}>+8 from last week</Text>
+              </View>
+            </View>
 
-             <View style={styles.statCard}>
-               <Text style={styles.statNumber}>8</Text>
-               <Text style={styles.statLabel}>Pending Reviews</Text>
-               <View style={[styles.statBadge, { backgroundColor: 'rgba(139, 92, 246, 0.2)' }]}>
-                 <Text style={[styles.statBadgeText, { color: '#8b5cf6' }]}>Needs attention</Text>
-               </View>
+            <View style={styles.statCard}>
+              <img src="https://img.icons8.com/fluency/48/clock.png" style={{width: 32, height: 32, position: 'absolute', top: 20, right: 20, opacity: 0.3}} alt="Pending" />
+              <Text style={styles.statNumber}>8</Text>
+              <Text style={styles.statLabel}>Pending Reviews</Text>
+              <View style={[styles.statBadge, { backgroundColor: 'rgba(251, 146, 60, 0.15)' }]}>
+                <Text style={[styles.statBadgeText, { color: '#f59e0b' }]}>Needs attention</Text>
+              </View>
             </View>
           </View>
 
@@ -136,7 +140,7 @@ export function DoctorDashboardScreen() {
                   style={styles.actionButton}
                   activeOpacity={0.8}
                 >
-                  <Text style={styles.actionIcon}>📝</Text>
+                  <img src="https://img.icons8.com/fluency/48/add-file.png" style={styles.actionIcon} alt="Create Form" />
                   <Text style={styles.actionText}>Create New Form</Text>
                 </TouchableOpacity>
               </TextLink>
@@ -145,7 +149,7 @@ export function DoctorDashboardScreen() {
                  style={styles.actionButton}
                  activeOpacity={0.8}
                >
-                 <Text style={styles.actionIcon}>👤</Text>
+                 <img src="https://img.icons8.com/fluency/48/add-user-male.png" style={styles.actionIcon} alt="Add Patient" />
                  <Text style={styles.actionText}>Add Patient</Text>
                </TouchableOpacity>
                
@@ -153,7 +157,7 @@ export function DoctorDashboardScreen() {
                  style={styles.actionButton}
                  activeOpacity={0.8}
                >
-                 <Text style={styles.actionIcon}>📊</Text>
+                 <img src="https://img.icons8.com/fluency/48/bar-chart.png" style={styles.actionIcon} alt="View Reports" />
                  <Text style={styles.actionText}>View Reports</Text>
                </TouchableOpacity>
             </View>
@@ -161,7 +165,10 @@ export function DoctorDashboardScreen() {
 
           {/* Recent Patients */}
           <View style={styles.recentSection}>
-            <Text style={styles.sectionTitle}>Recent Patients</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}>
+              <img src="https://img.icons8.com/fluency/32/stethoscope.png" style={{width: 28, height: 28, marginRight: 12}} alt="Patients" />
+              <Text style={styles.sectionTitle}>Recent Patients</Text>
+            </View>
             <View style={styles.patientList}>
               <ScrollView style={styles.patientScrollView} showsVerticalScrollIndicator={false}>
                 {recentPatients.map((patient) => (
@@ -193,19 +200,31 @@ export function DoctorDashboardScreen() {
 
           {/* Activity Feed */}
           <View style={styles.activitySection}>
-            <Text style={styles.sectionTitle}>Recent Activity</Text>
+            <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}>
+              <img src="https://img.icons8.com/ios-filled/50/activity-feed.png" style={{width: 28, height: 28, marginRight: 12}} alt="Activity" />
+              <Text style={styles.sectionTitle}>Recent Activity</Text>
+            </View>
             <View style={styles.activityFeed}>
               <View style={styles.activityItem}>
-                <Text style={styles.activityTime}>2 hours ago</Text>
-                <Text style={styles.activityText}>New form submitted by John Smith</Text>
+                <img src="https://img.icons8.com/fluency/24/form.png" style={{width: 20, height: 20, marginRight: 12}} alt="Form" />
+                <View style={{flex: 1}}>
+                  <Text style={styles.activityTime}>2 hours ago</Text>
+                  <Text style={styles.activityText}>New form submitted by John Smith</Text>
+                </View>
               </View>
               <View style={styles.activityItem}>
-                <Text style={styles.activityTime}>4 hours ago</Text>
-                <Text style={styles.activityText}>Appointment scheduled with Mary Johnson</Text>
+                <img src="https://img.icons8.com/fluency/24/calendar.png" style={{width: 20, height: 20, marginRight: 12}} alt="Appointment" />
+                <View style={{flex: 1}}>
+                  <Text style={styles.activityTime}>4 hours ago</Text>
+                  <Text style={styles.activityText}>Appointment scheduled with Mary Johnson</Text>
+                </View>
               </View>
               <View style={styles.activityItem}>
-                <Text style={styles.activityTime}>1 day ago</Text>
-                <Text style={styles.activityText}>Lab results received for Robert Brown</Text>
+                <img src="https://img.icons8.com/fluency/24/test-tube.png" style={{width: 20, height: 20, marginRight: 12}} alt="Lab Results" />
+                <View style={{flex: 1}}>
+                  <Text style={styles.activityTime}>1 day ago</Text>
+                  <Text style={styles.activityText}>Lab results received for Robert Brown</Text>
+                </View>
               </View>
             </View>
           </View>
@@ -227,8 +246,9 @@ const styles = {
   container: {
     flex: 1,
     flexDirection: 'row' as const,
-    backgroundColor: '#f8f9fa',
+    backgroundColor: '#f0f4f8',
     minHeight: '100vh',
+    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
   },
   backgroundShapes: {
     display: 'none',
@@ -241,26 +261,28 @@ const styles = {
   },
   sidebar: {
     width: 280,
-    backgroundColor: '#ffffff',
-    borderRightWidth: 1,
-    borderRightColor: '#e8eaed',
+    backgroundColor: '#1e3a8a',
+    borderRightWidth: 0,
     paddingVertical: 24,
     position: 'fixed',
     left: 0,
     top: 0,
     zIndex: 100,
     height: '100vh',
+    boxShadow: '4px 0 20px rgba(0, 0, 0, 0.1)',
   },
   sidebarHeader: {
     paddingHorizontal: 24,
     paddingBottom: 32,
     borderBottomWidth: 1,
-    borderBottomColor: '#e8eaed',
+    borderBottomColor: 'rgba(255, 255, 255, 0.2)',
+    alignItems: 'center',
   },
   sidebarTitle: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: '700',
-    color: '#202124',
+    color: '#ffffff',
+    letterSpacing: '-0.5px',
   },
   sidebarNav: {
     paddingTop: 24,
@@ -269,25 +291,32 @@ const styles = {
     flexDirection: 'row' as const,
     alignItems: 'center',
     paddingHorizontal: 24,
-    paddingVertical: 12,
+    paddingVertical: 16,
     marginHorizontal: 12,
-    borderRadius: 8,
+    marginVertical: 4,
+    borderRadius: 12,
+    transition: 'all 0.2s ease',
   },
   activeNavItem: {
-    backgroundColor: '#e8f0fe',
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
     borderWidth: 0,
+    transform: 'translateX(4px)',
   },
   navIcon: {
-    fontSize: 18,
-    marginRight: 12,
+    width: 24,
+    height: 24,
+    marginRight: 16,
+    filter: 'brightness(0) invert(1)',
+    opacity: 0.9,
   },
   navLabel: {
     fontSize: 16,
-    color: '#5f6368',
+    color: 'rgba(255, 255, 255, 0.9)',
     fontWeight: '500',
+    letterSpacing: '0.2px',
   },
   activeNavLabel: {
-    color: '#1a73e8',
+    color: '#ffffff',
     fontWeight: '600',
   },
   mainContent: {
@@ -298,19 +327,21 @@ const styles = {
   header: {
     backgroundColor: '#ffffff',
     paddingHorizontal: 32,
-    paddingVertical: 24,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e8eaed',
+    paddingVertical: 32,
+    borderBottomWidth: 0,
+    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: '700',
-    color: '#202124',
-    marginBottom: 4,
+    color: '#1e3a8a',
+    marginBottom: 8,
+    letterSpacing: '-0.5px',
   },
   headerSubtitle: {
-    fontSize: 16,
-    color: '#5f6368',
+    fontSize: 18,
+    color: '#64748b',
+    fontWeight: '400',
   },
   dashboardContent: {
     flex: 1,
@@ -324,22 +355,25 @@ const styles = {
   statCard: {
     flex: 1,
     backgroundColor: '#ffffff',
-    borderRadius: 8,
-    padding: 20,
-    borderWidth: 1,
-    borderColor: '#e8eaed',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    borderRadius: 16,
+    padding: 24,
+    borderWidth: 0,
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    position: 'relative',
+    overflow: 'hidden',
   },
   statNumber: {
-    fontSize: 32,
-    fontWeight: '700',
-    color: '#202124',
+    fontSize: 40,
+    fontWeight: '800',
+    color: '#1e3a8a',
     marginBottom: 8,
+    letterSpacing: '-1px',
   },
   statLabel: {
-    fontSize: 14,
-    color: '#5f6368',
-    marginBottom: 12,
+    fontSize: 16,
+    color: '#64748b',
+    marginBottom: 16,
+    fontWeight: '500',
   },
   statBadge: {
     backgroundColor: '#e8f5e8',
@@ -357,10 +391,11 @@ const styles = {
     marginBottom: 32,
   },
   sectionTitle: {
-    fontSize: 22,
-    fontWeight: '600',
-    color: '#202124',
-    marginBottom: 20,
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#1e3a8a',
+    marginBottom: 0,
+    letterSpacing: '-0.3px',
   },
   actionButtons: {
     flexDirection: 'row' as const,
@@ -369,32 +404,33 @@ const styles = {
   actionButton: {
     flex: 1,
     backgroundColor: '#ffffff',
-    borderRadius: 8,
-    padding: 24,
+    borderRadius: 16,
+    padding: 32,
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#e8eaed',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    borderWidth: 0,
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+    transition: 'all 0.2s ease',
   },
   actionIcon: {
-    fontSize: 28,
-    marginBottom: 12,
+    width: 48,
+    height: 48,
+    marginBottom: 16,
   },
   actionText: {
-    fontSize: 14,
-    fontWeight: '500',
-    color: '#202124',
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#1e3a8a',
+    textAlign: 'center',
   },
   recentSection: {
     marginBottom: 32,
   },
   patientList: {
     backgroundColor: '#ffffff',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#e8eaed',
+    borderRadius: 16,
+    borderWidth: 0,
     overflow: 'hidden',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
   },
   patientScrollView: {
     maxHeight: 350,
@@ -437,13 +473,14 @@ const styles = {
   },
   activityFeed: {
     backgroundColor: '#ffffff',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: '#e8eaed',
+    borderRadius: 16,
+    borderWidth: 0,
     overflow: 'hidden',
-    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
   },
   activityItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 24,
     paddingVertical: 18,
     borderBottomWidth: 1,
