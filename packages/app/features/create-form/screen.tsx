@@ -282,11 +282,11 @@ export function CreateFormScreen() {
       {/* Tab Navigation */}
       <View style={styles.tabContainer}>
         <TouchableOpacity 
-          style={[styles.tab, activeTab === 'templates' && styles.activeTab]}
-          onPress={() => setActiveTab('templates')}
+          style={[styles.tab, activeTab === 'my-forms' && styles.activeTab]}
+          onPress={() => setActiveTab('my-forms')}
         >
-          <Text style={[styles.tabText, activeTab === 'templates' && styles.activeTabText]}>
-            📋 Pre-made Templates
+          <Text style={[styles.tabText, activeTab === 'my-forms' && styles.activeTabText]}>
+            📁 My Forms
           </Text>
         </TouchableOpacity>
         <TouchableOpacity 
@@ -298,19 +298,19 @@ export function CreateFormScreen() {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity 
+          style={[styles.tab, activeTab === 'templates' && styles.activeTab]}
+          onPress={() => setActiveTab('templates')}
+        >
+          <Text style={[styles.tabText, activeTab === 'templates' && styles.activeTabText]}>
+            📋 Pre-made Templates
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
           style={[styles.tab, activeTab === 'marketplace' && styles.activeTab]}
           onPress={() => setActiveTab('marketplace')}
         >
           <Text style={[styles.tabText, activeTab === 'marketplace' && styles.activeTabText]}>
             🌟 Community Marketplace
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.tab, activeTab === 'my-forms' && styles.activeTab]}
-          onPress={() => setActiveTab('my-forms')}
-        >
-          <Text style={[styles.tabText, activeTab === 'my-forms' && styles.activeTabText]}>
-            📁 My Forms
           </Text>
         </TouchableOpacity>
       </View>
