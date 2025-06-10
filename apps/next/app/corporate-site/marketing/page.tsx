@@ -25,13 +25,14 @@ export default function MarketingPage() {
               <Link href="/corporate-site/enterprise" className="nav-link">Enterprise</Link>
               <Link href="/corporate-site/ai" className="nav-link">AI</Link>
               <Link href="#platform" className="nav-link">Platform</Link>
-              <Link href="#pricing" className="nav-link">Pricing</Link>
+              <Link href="/corporate-site/pricing" className="nav-link">Pricing</Link>
               <Link href="#about" className="nav-link">About</Link>
+              <Link href="/contact" className="nav-link">Contact</Link>
             </div>
           </div>
           <div className="nav-right">
             <Link href="/login" className="nav-link-secondary">Sign In</Link>
-            <Link href="#demo" className="btn btn-primary">Request Demo</Link>
+            <Link href="/contact?type=demo" className="btn btn-primary">Request Demo</Link>
           </div>
         </div>
       </nav>
