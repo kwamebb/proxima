@@ -7,9 +7,9 @@ import { Swipeable } from 'react-native-gesture-handler'
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('window')
 
-// Premium dark medical color scheme
+// Premium dark medical color scheme with true black
 const colors = {
-  background: '#060810',
+  background: '#000000',
   backgroundSecondary: '#0a0e13',
   surface: '#141922',
   surfaceElevated: '#1c2229',
@@ -26,6 +26,7 @@ const colors = {
   textMuted: '#697a8a',
   buttonPrimary: '#00bcd4',
   buttonSecondary: '#3a4651',
+  buttonGlass: 'rgba(14, 165, 233, 0.1)',
   accent: '#40c4ff',
   danger: '#ff4757',
   success: '#2ed573',
@@ -101,29 +102,46 @@ export function HomeScreen() {
     setDismissModal({visible: true, issueId})
   }
 
-  // Create right action (delete) for swipeable
+  // Ultra-premium swipe action with glass morphism
   const renderRightAction = (issueId: number) => {
     return (
       <TouchableOpacity
         style={{
-          backgroundColor: colors.swipeDestroy,
+          backgroundColor: colors.danger,
           justifyContent: 'center',
           alignItems: 'center',
           width: 120,
-          borderRadius: 20,
-          marginLeft: 10,
+          borderRadius: 24,
+          marginLeft: 12,
+          borderWidth: 1,
+          borderColor: 'rgba(220, 38, 38, 0.3)',
+          shadowColor: colors.danger,
+          shadowOffset: { width: 0, height: 8 },
+          shadowOpacity: 0.5,
+          shadowRadius: 16,
+          elevation: 12,
         }}
         onPress={() => setDismissModal({visible: true, issueId})}
       >
-        <Ionicons name="trash" size={24} color={colors.textPrimary} />
+        <View style={{
+          width: 48,
+          height: 48,
+          borderRadius: 24,
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: 8,
+        }}>
+          <Ionicons name="trash-outline" size={22} color={colors.textPrimary} />
+        </View>
         <Text style={{
           color: colors.textPrimary,
-          fontSize: 12,
-          fontWeight: '700',
-          marginTop: 4,
+          fontSize: 11,
+          fontWeight: '600',
+          letterSpacing: 0.5,
           textAlign: 'center',
         }}>
-          DELETE
+          REMOVE
         </Text>
       </TouchableOpacity>
     )
@@ -432,9 +450,26 @@ export function HomeScreen() {
 
         {/* Individual Health Issue Cards */}
         <View style={{ marginHorizontal: 20, marginBottom: 24 }}>
-          <Text style={{ fontSize: 22, fontWeight: '700', color: colors.textPrimary, marginBottom: 16 }}>
-            Active Health Issues
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 16 }}>
+            <Text style={{ fontSize: 22, fontWeight: '700', color: colors.textPrimary, flex: 1 }}>
+              Active Health Issues
+            </Text>
+            <View style={{
+              paddingHorizontal: 12,
+              paddingVertical: 6,
+              backgroundColor: colors.buttonGlass,
+              borderRadius: 12,
+            }}>
+              <Text style={{
+                fontSize: 11,
+                fontWeight: '600',
+                color: colors.accent,
+                letterSpacing: 0.5,
+              }}>
+                {issues.length} ACTIVE
+              </Text>
+            </View>
+          </View>
           
           {issues.map((issue) => {
             return (
@@ -489,13 +524,13 @@ export function HomeScreen() {
                       </View>
                     </View>
                 
-                {/* Always visible line graph */}
-                <View style={{ marginTop: 8 }}>
-                  <Text style={{ fontSize: 14, fontWeight: '600', color: colors.textSecondary, marginBottom: 8 }}>
-                    Pain Level Trend (Last 12 Days)
-                  </Text>
-                  {renderLineGraph(issue.data, issue.severityColor)}
-                </View>
+                    {/* Always visible line graph */}
+                    <View style={{ marginTop: 8 }}>
+                      <Text style={{ fontSize: 14, fontWeight: '600', color: colors.textSecondary, marginBottom: 8 }}>
+                        Pain Level Trend (Last 12 Days)
+                      </Text>
+                      {renderLineGraph(issue.data, issue.severityColor)}
+                    </View>
                 
                     <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: 12 }}>
                       <Ionicons 
