@@ -32,7 +32,10 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@expo/vector-icons": "^14.1.0",
+    "@react-navigation/bottom-tabs": "^7.3.14",
     "expo": "^53.0.0",
+    "react-native-gesture-handler": "^2.25.0",
     "react-native-reanimated": "^3.18.0",
     "zustand": "^5.0.5"
   }
